@@ -1,4 +1,4 @@
-<h2>Sistema de Controle de Entrade e Saída de Produtos</h2>
+<h2>Sistema de Controle de Entrada e Saída de Produtos</h2>
 
 <p>Linguagem de programação: PHP 7.1</p>
 <p>Laravel: 5</p>
