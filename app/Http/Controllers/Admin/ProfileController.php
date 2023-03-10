@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
+    /**
+     * Exibe o formulario Meu Perfil
+     *
+     * @return void
+     */
     public function index()
     {
         $loggedId = intval(Auth::id());
@@ -25,41 +30,46 @@ class ProfileController extends Controller
         return redirect()->route('meu-perfil');
     }
 
+    /**
+     * Edita os dados do perfil
+     *
+     * @param Request $request Recebe os dados do formulario
+     * @return void
+     */
     public function update(Request $request)
     {
         $user = auth()->user();
 
-        // Recebendo apenas os dados abaixo do formulario
-        $data = $request->only([
-            'name',
-            'image',
-            'email',
-            'password',
-            'password_confirmation'
-        ]);
+        if ($user){
 
-        // Senha
-        if ($data['password'] != null){
-            $data['password'] = bcrypt($data['password']);
-        } else {
-            unset($data['password']);
-        }
+            // Validando
+            $request->validate([
+                'name'     => 'required|string|max:100',
+                'image'    => 'nullable|image|max:3072',
+                'email'    => 'required|string|email|max:200|unique:users,email,' . $user->id,
+                'password' => 'nullable|string|confirmed|min:8',
+            ]);
 
-        // Verificando se foi enviado alguma imagem, se existir ira deletar e fazer o upload
-        if (isset($data['image'])){
-            if ($user->image && Storage::exists($user->image)){
-                Storage::delete($user->image);
+            // Recebendo os dados
+            $data = $request->only(['name', 'email', 'image']);
+
+            // Verificando se foi enviado alguma imagem, se existir irá deletar e fazer o upload
+            if ($request->hasFile('image')) {
+                if ($user->image && Storage::exists($user->image)) {
+                    Storage::delete($user->image);
+                }
+                $path = $request->image->store('users');
+                $data['image'] = $path;
             }
-            $path = $data['image']->store('users');
-            $data['image'] = $path;
+
+            // Verificando se o input da senha
+            if ($request->filled('password')) {
+                $data['password'] = bcrypt($request->input('password'));
+            }
+
+            $user->update($data);
+
+            return redirect()->route('profile')->with('success', 'Perfil atualizado com sucesso!');
         }
-
-        $update = $user->update($data);
-
-        if ($update){
-            return redirect()->route('profile')->with('success', 'Sucesso ao atualizar!');
-        }
-
-        return redirect()->back()->with('error', 'Erro ao atualizar o perfil!');
     }
 }
