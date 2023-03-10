@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -48,6 +49,21 @@ class ProductController extends Controller
             'sule_price',
             'amount'
         ]);
+
+        // Validando
+        $validator = Validator::make($data, [
+            'name'       => ['required', 'string', 'max:100'],
+            'cost_price' => ['required', 'numeric', 'max:10000'],
+            'sule_price' => ['required', 'numeric', 'max:10000'],
+            'amount'     => ['required', 'numeric', 'max:10000']
+        ]);
+
+        // Verificando se existe algum erro com a validação
+        if ($validator->fails()){
+            return redirect()->route('products.create')
+            ->withErrors($validator)
+            ->withInput();
+        }
 
         // Inserindo no BD
         $product = new Product;
@@ -113,6 +129,22 @@ class ProductController extends Controller
                 'amount'
             ]);
 
+            // Validando
+            $validator = Validator::make($data, [
+                'name'       => ['required', 'string', 'max:100'],
+                'cost_price' => ['required', 'numeric', 'max:10000'],
+                'sule_price' => ['required', 'numeric', 'max:10000'],
+                'amount'     => ['required', 'numeric', 'max:10000']
+            ]);
+
+            // Verificando se existe algum erro com a validação
+            if ($validator->fails()){
+                return redirect()->route('products.edit', ['id' => $product->id])
+                ->withErrors($validator)
+                ->withInput();
+            }
+
+            // Inserindo no BD
             $product->name = $data['name'];
             $product->cost_price = $data['cost_price'];
             $product->sule_price = $data['sule_price'];
@@ -125,6 +157,6 @@ class ProductController extends Controller
             }
         }
 
-        return redirect()->route('products')->with('error', 'Produto não excluido com sucesso!');
+        return redirect()->route('products')->with('error', 'Produto não atualizado com sucesso!');
     }
 }
