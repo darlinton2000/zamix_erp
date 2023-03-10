@@ -7,7 +7,7 @@
 <hr/>
 
 <p>Bibliotecas Utilizadas:</p>
-<p>Bootstrap v3.4.1</p>
+<p>Bootstrap 3.4</p>
 <p>ChartJS 2.8</p>
 <p>DataTables 1.10</p>
 <p>FullCalendar 1.4</p>
