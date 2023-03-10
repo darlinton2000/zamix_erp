@@ -6,6 +6,16 @@
 
 <hr/>
 
+<p>Bibliotecas Utilizadas:</p>
+<p>Bootstrap v3.4.1</p>
+<p>ChartJS 2.8</p>
+<p>DataTables 1.10</p>
+<p>FullCalendar 1.4</p>
+<p>Font Awesome Free 5.10</p>
+<p>Ionicons 2.0</p>
+
+<hr/>
+
 Tela Inicial
 
 ![01 - Página Inicial](https://user-images.githubusercontent.com/46008964/224045952-12ed3040-1672-450a-bb5d-2d7f05a46109.png)
