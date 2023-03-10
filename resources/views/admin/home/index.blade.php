@@ -94,7 +94,7 @@
                         data: {!! $graphicValues1 !!}
                     },
                     {
-                        label: 'Produtos que sairam do Estoque',
+                        label: 'Produtos que Sairam do Estoque',
                         backgroundColor: 'rgba(220,20,60)',
                         data: {!! $graphicValues2 !!}
                     }
@@ -111,7 +111,4 @@
             }
         });
     </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
 @stop
