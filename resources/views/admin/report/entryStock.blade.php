@@ -35,7 +35,7 @@
 
                 <div class="box-footer">
                     <button type="submit" class="btn btn-success">Buscar</button>
-                    <a href="{{ url()->previous() }}" class="btn btn-default pull-right">Voltar</a>
+                    <a href="{{ route('admin.home') }}" class="btn btn-default pull-right">Voltar</a>
                 </div>
             </form>
         </div>
