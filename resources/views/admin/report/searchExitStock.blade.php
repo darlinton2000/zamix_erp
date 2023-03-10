@@ -15,7 +15,7 @@
             @if ($stocks->isEmpty())
                 <div class="alert alert-danger">Nenhum registro foi encontrado!</div>
             @else
-                <table class="table table-hover">
+                <table id="datatable" class="table table-hover">
                     <thead>
                         <tr>
                             <th>Produto</th>
@@ -39,5 +39,28 @@
         </div>
     </div>
     
-    {{-- {{ $stocks->links('pagination::bootstrap-4') }} --}}
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#datatable').DataTable({
+                "oLanguage": {
+                    "sLengthMenu": "Mostrar _MENU_ registros por página",
+                    "sZeroRecords": "Nenhum registro encontrado",
+                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ registro(s)",
+                    "sInfoEmpty": "Mostrando 0 a 0 de 0 registros",
+                    "sInfoFiltered": "(filtrado de _MAX_ registros)",
+                    "sSearch": "Pesquisar: ",
+                    "oPaginate": {
+                        "sFirst": "Início",
+                        "sPrevious": "Anterior",
+                        "sNext": "Próximo",
+                        "sLast": "Último"
+                    }
+                },
+                responsive: true
+            });
+        });
+    </script>
 @stop
