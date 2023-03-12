@@ -3,13 +3,12 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
+    <link href="{{ asset('css/fullcalendar.css') }}" rel="stylesheet" type="text/css">
+    
     <h1>Dashboard</h1>
 @stop
 
 @section('content')
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
 
     <div class="row">
         <div class="col-md-3">
@@ -67,6 +66,9 @@
             <canvas class="box box-primary" id="grafico"></canvas>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
