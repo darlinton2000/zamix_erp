@@ -1,12 +1,40 @@
-<h2>Sistema de Controle de Entrada e Saída de Produtos</h2>
+<h2>Zamix ERP</h2>
 
 <p><b>Linguagem de programação:</b> PHP 7.1</p>
 <p><b>Laravel:</b> 5</p>
 <p><b>Painel de administração:</b> AdminLTE 2</p>
+<p><b>Bibliotecas Utilizadas:</b> Bootstrap 3.4, ChartJS 2.8, DataTables 1.10, FullCalendar 1.4, Font Awesome Free 5.10, Ionicons 2.0</p>
 
 <hr/>
 
-<p><b>Bibliotecas Utilizadas:</b> Bootstrap 3.4, ChartJS 2.8, DataTables 1.10, FullCalendar 1.4, Font Awesome Free 5.10, Ionicons 2.0</p>
+## 1º - Clonar o repositório
+```
+git clone https://github.com/darlinton2000/zamix_erp
+```
+## 2º - Gerar a chave para o projeto
+```
+php artisan key:generate
+```
+## 3º - Cria o arquivo .env para as configurações do projeto
+```
+copy .env.sample .env
+```
+## 4º - Instala as dependências do projeto
+```
+composer install
+```
+## 5º - Cria as tabelas do banco de dados
+```
+php artisan migrate
+```
+## 6º - Populando as tabelas do banco de dados com os dados iniciais
+```
+php artisan db:seed
+```
+## 7º - Iniciando a aplicação
+```
+php artisan serve
+```
 
 <hr/>
 
