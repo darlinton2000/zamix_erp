@@ -24,28 +24,32 @@
 
     <div class="box">
         <div class="box-body">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome do Funcionário</th>
-                        <th>Produto</th>
-                        <th>Quantidade</th>
-                        <th>Data da Retirada</th>
-                    </tr>
-                </thead>
-                <tbody>   
-                    @foreach ($requisitions as $requisition)
-                    <tr>
-                        <td>{{ $requisition->id }}</td>
-                        <td>{{ $requisition->user->name }}</td>
-                        <td>{{ $requisition->product->name }}</td>
-                        <td>{{ $requisition->amount }}</td>
-                        <td>{{ \Carbon\Carbon::parse($requisition->withdrawal_date)->format('d/m/Y')}}</td>
-                    </tr>
-                    @endforeach
-                </tbody> 
-            </table>
+            @if ($requisitions->isEmpty())
+                <div class="alert alert-danger">Nenhum registro foi encontrado!</div>
+            @else
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome do Funcionário</th>
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                            <th>Data da Retirada</th>
+                        </tr>
+                    </thead>
+                    <tbody>   
+                        @foreach ($requisitions as $requisition)
+                        <tr>
+                            <td>{{ $requisition->id }}</td>
+                            <td>{{ $requisition->user->name }}</td>
+                            <td>{{ $requisition->product->name }}</td>
+                            <td>{{ $requisition->amount }}</td>
+                            <td>{{ \Carbon\Carbon::parse($requisition->withdrawal_date)->format('d/m/Y')}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody> 
+                </table>
+            @endif
         </div>
     </div>
     

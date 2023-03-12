@@ -5,7 +5,6 @@
 @section('content_header')
     <h1>
         Listar Estoque
-        {{-- <a href="{{ route('users.create') }}" class="btn btn-sm btn-success">Novo Usuário</a> --}}
     </h1>
 @stop
 
@@ -25,46 +24,50 @@
 
     <div class="box">
         <div class="box-body">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Produto</th>
-                        <th>Quantidade Entrada</th>
-                        <th>Quantidade Saída</th>
-                        <th>Preço Custo Total</th>
-                        <th>Preço Venda Total</th>
-                        <th>Data Entrada</th>
-                        <th>Data Saída</th>
-                    </tr>
-                </thead>
-                <tbody>   
-                    @foreach ($stocks as $stock)
-                    <tr>
-                        <td>{{ $stock->id }}</td>
-                        <td>{{ $stock->product->name }}</td>
-                        <td>{{ $stock->amount_entry }}</td>
+            @if ($stocks->isEmpty())
+                <div class="alert alert-danger">Nenhum registro foi encontrado!</div>
+            @else
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Produto</th>
+                            <th>Quantidade Entrada</th>
+                            <th>Quantidade Saída</th>
+                            <th>Preço Custo Total</th>
+                            <th>Preço Venda Total</th>
+                            <th>Data Entrada</th>
+                            <th>Data Saída</th>
+                        </tr>
+                    </thead>
+                    <tbody>   
+                        @foreach ($stocks as $stock)
+                        <tr>
+                            <td>{{ $stock->id }}</td>
+                            <td>{{ $stock->product->name }}</td>
+                            <td>{{ $stock->amount_entry }}</td>
 
-                        @if ($stock->amount_exit)
-                            <td>{{ $stock->amount_exit }}</td>
-                        @else
-                            <td> - </td>
-                        @endif
+                            @if ($stock->amount_exit)
+                                <td>{{ $stock->amount_exit }}</td>
+                            @else
+                                <td> - </td>
+                            @endif
 
-                        <td>R$ {{ $stock->amount_entry * $stock->cost_price }}</td>
-                        <td>R$ {{ $stock->amount_entry * $stock->sule_price }}</td>
-                        <td>{{ \Carbon\Carbon::parse($stock->date_entry)->format('d/m/Y')}}</td>
+                            <td>R$ {{ $stock->amount_entry * $stock->cost_price }}</td>
+                            <td>R$ {{ $stock->amount_entry * $stock->sule_price }}</td>
+                            <td>{{ \Carbon\Carbon::parse($stock->date_entry)->format('d/m/Y')}}</td>
 
-                        @if (isset($stock->date_exit))
-                            <td>{{ \Carbon\Carbon::parse($stock->date_exit)->format('d/m/Y')}}</td>
-                        @else
-                            <td> - </td>
-                        @endif
+                            @if (isset($stock->date_exit))
+                                <td>{{ \Carbon\Carbon::parse($stock->date_exit)->format('d/m/Y')}}</td>
+                            @else
+                                <td> - </td>
+                            @endif
 
-                    </tr>
-                    @endforeach
-                </tbody> 
-            </table>
+                        </tr>
+                        @endforeach
+                    </tbody> 
+                </table>
+            @endif
         </div>
     </div>
     

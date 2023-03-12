@@ -25,41 +25,45 @@
 
     <div class="box">
         <div class="box-body">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Preço de Custo</th>
-                        <th>Preço de Venda</th>
-                        <th>Quantidade</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($products as $product)
+            @if ($products->isEmpty())
+                <div class="alert alert-danger">Nenhum registro foi encontrado!</div>
+            @else
+                <table class="table table-hover">
+                    <thead>
                         <tr>
-                            <td>{{ $product->id }}</td>
-                            <td>{{ $product->name }}</td>
-                            <td>R$ {{ $product->cost_price }}</td>
-                            <td>R$ {{ $product->sule_price }}</td>
-                            <td>{{ $product->amount }}</td>
-                            <td>
-                                <!-- Botão Editar -->
-                                <a href="{{ route('products.edit', ['id' => $product->id]) }}"
-                                    class="btn btn-sm btn-warning">Editar</a>
-                                <!-- Botão Excluir -->
-                                <form class="inline" method="POST"
-                                    action="{{ route('products.destroy', ['id' => $product->id]) }}"
-                                    onsubmit="return confirm('Tem certeza que deseja excluir?')">
-                                    {!! csrf_field() !!}
-                                    <button class="btn btn-sm btn-danger">Excluir</button>
-                                </form>
-                            </td>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Preço de Custo</th>
+                            <th>Preço de Venda</th>
+                            <th>Quantidade</th>
+                            <th>Ações</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($products as $product)
+                            <tr>
+                                <td>{{ $product->id }}</td>
+                                <td>{{ $product->name }}</td>
+                                <td>R$ {{ $product->cost_price }}</td>
+                                <td>R$ {{ $product->sule_price }}</td>
+                                <td>{{ $product->amount }}</td>
+                                <td>
+                                    <!-- Botão Editar -->
+                                    <a href="{{ route('products.edit', ['id' => $product->id]) }}"
+                                        class="btn btn-sm btn-warning">Editar</a>
+                                    <!-- Botão Excluir -->
+                                    <form class="inline" method="POST"
+                                        action="{{ route('products.destroy', ['id' => $product->id]) }}"
+                                        onsubmit="return confirm('Tem certeza que deseja excluir?')">
+                                        {!! csrf_field() !!}
+                                        <button class="btn btn-sm btn-danger">Excluir</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @endif
         </div>
     </div>
 
