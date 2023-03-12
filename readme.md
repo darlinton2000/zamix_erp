@@ -1,18 +1,12 @@
 <h2>Sistema de Controle de Entrada e Saída de Produtos</h2>
 
-<p>Linguagem de programação: PHP 7.1</p>
-<p>Laravel: 5</p>
-<p>Painel de administração: AdminLTE 2</p>
+<p><b>Linguagem de programação:</b> PHP 7.1</p>
+<p><b>Laravel:</b> 5</p>
+<p><b>Painel de administração:</b> AdminLTE 2</p>
 
 <hr/>
 
-<p>Bibliotecas Utilizadas:</p>
-<p>Bootstrap 3.4</p>
-<p>ChartJS 2.8</p>
-<p>DataTables 1.10</p>
-<p>FullCalendar 1.4</p>
-<p>Font Awesome Free 5.10</p>
-<p>Ionicons 2.0</p>
+<p><b>Bibliotecas Utilizadas:</b> Bootstrap 3.4, ChartJS 2.8, DataTables 1.10, FullCalendar 1.4, Font Awesome Free 5.10, Ionicons 2.0</p>
 
 <hr/>
 
