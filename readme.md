@@ -48,5 +48,5 @@ Tela de Login
 
 Dashboard
 
-![03 - Dashboard](https://user-images.githubusercontent.com/46008964/224138506-815be77b-90af-41f9-a018-0c22eab571d6.png)
+![03 - Dashboard](https://user-images.githubusercontent.com/46008964/224576176-d13d2288-3165-466d-8b05-c199465c5c25.png)
 
