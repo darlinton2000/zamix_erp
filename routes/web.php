@@ -36,6 +36,9 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
     Route::post('editar-produto/{id}', 'ProductController@update')->name('products.update');
     Route::post('deletar-produto/{id}', 'ProductController@destroy')->name('products.destroy');
 
+    // Produtos Compostos
+    Route::get('produtos-compostos', 'CompositeProductController@index')->name('composite');
+
     // Usuarios
     Route::get('usuarios', 'UserController@index')->name('users');
     Route::get('novo-usuario', 'UserController@create')->name('users.create');

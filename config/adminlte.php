@@ -157,7 +157,7 @@ return [
                 ],
                 [
                     'text' => 'Compostos',
-                    'url'  => '#',
+                    'url'  => 'produtos-compostos',
                 ],
             ],
         ],

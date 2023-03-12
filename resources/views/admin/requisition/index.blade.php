@@ -5,7 +5,6 @@
 @section('content_header')
     <h1>
         Listar Requisições
-        {{-- <a href="{{ route('users.create') }}" class="btn btn-sm btn-success">Novo Usuário</a> --}}
     </h1>
 @stop
 
