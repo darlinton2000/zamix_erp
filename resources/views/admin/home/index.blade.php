@@ -72,10 +72,14 @@
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
+                aspectRatio: 1.22,
                 initialView: 'dayGridMonth',
+                locale: 'pt-br',
+                buttonText: {
+                today: 'Hoje',
+            },
             });
             calendar.render();
-            calendar.setOption('height', 366);
             calendar.updateSize();
         });
     </script>
