@@ -14,6 +14,6 @@ $factory->define(App\Models\Stock::class, function (Faker $faker) {
         'cost_price'   => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 100),
         'sule_price'   => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 100),
         'date_entry'   => $faker->dateTimeBetween($startDate, $endDate),
-        'date_exit'   => $faker->dateTimeBetween($startDate, $endDate),
+        'date_exit'    => $faker->dateTimeBetween($startDate, $endDate),
     ];
 });

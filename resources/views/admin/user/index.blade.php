@@ -55,8 +55,13 @@
                     @endforeach
                 </tbody> 
             </table>
+
+            <div class="mx-auto text-center">
+                {{ $users->links('pagination::bootstrap-4') }}
+            </div>
+            
         </div>
     </div>
     
-    {{ $users->links('pagination::bootstrap-4') }}
+    
 @stop

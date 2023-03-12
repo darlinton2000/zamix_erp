@@ -49,9 +49,11 @@
                         @endforeach
                     </tbody> 
                 </table>
+
+                <div class="mx-auto text-center">
+                    {{ $requisitions->links('pagination::bootstrap-4') }}
+                </div>
             @endif
         </div>
     </div>
-    
-    {{ $requisitions->links('pagination::bootstrap-4') }}
 @stop

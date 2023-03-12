@@ -63,9 +63,11 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                <div class="mx-auto text-center">
+                    {{ $products->links('pagination::bootstrap-4') }}
+                </div>
             @endif
         </div>
     </div>
-
-    {{ $products->links('pagination::bootstrap-4') }}
 @stop
