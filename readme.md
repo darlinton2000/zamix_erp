@@ -15,13 +15,13 @@ git clone https://github.com/darlinton2000/zamix_erp
 ```
 cp .env.example .env
 ```
-## 3º - Gerar a chave para o projeto
-```
-php artisan key:generate
-```
-## 4º - Instala as dependências do projeto
+## 3º - Instala as dependências do projeto
 ```
 composer install
+```
+## 4º - Gerar a chave para o projeto
+```
+php artisan key:generate
 ```
 ## 5º - Cria as tabelas do banco de dados
 ```
