@@ -13,7 +13,7 @@ git clone https://github.com/darlinton2000/zamix_erp
 ```
 ## 2º - Cria o arquivo .env para as configurações do projeto
 ```
-copy .env.sample .env
+cp .env.example .env
 ```
 ## 3º - Gerar a chave para o projeto
 ```
