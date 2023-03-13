@@ -1,0 +1,5 @@
+/* Consulta Relatorio de Entrada de Estoque */
+
+SELECT p.name AS produto, s.amount_entry AS quantidade_requisitada, s.amount_entry * s.cost_price AS preco_custo_total, s.amount_entry * s.sule_price AS preco_venda_total, date_format(s.date_entry, '%d/%m/%Y') AS data_entrada
+FROM stocks AS s
+INNER JOIN products AS p ON s.product_id = p.id 

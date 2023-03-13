@@ -1,0 +1,6 @@
+/* Consulta Relatorio de Entrada de Estoque */
+
+SELECT p.name AS produto, s.amount_exit AS quantidade_retirada_estoque, s.amount_entry * s.cost_price AS preco_custo_total, date_format(s.date_exit, '%d/%m/%Y') AS data_saida 
+FROM stocks AS s
+INNER JOIN products AS p ON s.product_id = p.id
+WHERE s.date_exit IS NOT NULL

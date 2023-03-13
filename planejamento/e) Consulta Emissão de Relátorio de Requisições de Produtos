@@ -1,0 +1,6 @@
+/* Consulta  Emissão de Relátorio de Requisições de Produtos */
+
+SELECT r.id, u.name AS nome_funcionario, p.name AS produto, r.amount AS quantidade, date_format(r.withdrawal_date, '%d/%m/%Y') AS data_retirada 
+FROM requisitions AS r
+INNER JOIN users AS u ON r.user_id = u.id
+INNER JOIN products AS p ON r.product_id = p.id
