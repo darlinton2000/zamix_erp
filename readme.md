@@ -11,13 +11,13 @@
 ```
 git clone https://github.com/darlinton2000/zamix_erp
 ```
-## 2º - Gerar a chave para o projeto
-```
-php artisan key:generate
-```
-## 3º - Cria o arquivo .env para as configurações do projeto
+## 2º - Cria o arquivo .env para as configurações do projeto
 ```
 copy .env.sample .env
+```
+## 3º - Gerar a chave para o projeto
+```
+php artisan key:generate
 ```
 ## 4º - Instala as dependências do projeto
 ```
