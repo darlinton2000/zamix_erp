@@ -31,7 +31,11 @@ php artisan migrate
 ```
 php artisan db:seed
 ```
-## 7º - Iniciando a aplicação
+## 7º - Criar o link simbólico aonde as fotos dos usuários ficam armazenadas
+```
+php artisan storage:link
+```
+## 8º - Iniciando a aplicação
 ```
 php artisan serve
 ```
