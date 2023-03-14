@@ -31,7 +31,7 @@ php artisan migrate
 ```
 php artisan db:seed
 ```
-## 7º - Criar o link simbólico aonde as fotos dos usuários ficam armazenadas
+## 7º - Cria o link simbólico aonde as fotos dos usuários ficam armazenadas
 ```
 php artisan storage:link
 ```
