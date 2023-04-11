@@ -36,6 +36,7 @@
                             <th>Produto</th>
                             <th>Quantidade</th>
                             <th>Data da Retirada</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>   
@@ -46,6 +47,18 @@
                             <td>{{ $requisition->product->name }}</td>
                             <td>{{ $requisition->amount }}</td>
                             <td>{{ \Carbon\Carbon::parse($requisition->withdrawal_date)->format('d/m/Y')}}</td>
+                            <td>
+                                <!-- Botão Editar -->
+                                <a href="#"
+                                   class="btn btn-sm btn-warning">Editar</a>
+                                <!-- Botão Excluir -->
+                                <form class="inline" method="POST"
+                                      action="{{ route('requisitions.destroy', ['id' => $requisition->id]) }}"
+                                      onsubmit="return confirm('Tem certeza que deseja excluir?')">
+                                    {!! csrf_field() !!}
+                                    <button class="btn btn-sm btn-danger">Excluir</button>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody> 

@@ -89,4 +89,18 @@ class RequisitionController extends Controller
 
         return redirect()->route('requisitions')->with('success', 'Requisição cadastrada com sucesso!');
     }
+
+    /**
+     * Deletando a requisicao
+     *
+     * @param integer $id Recebe o id da requisicao
+     * @return void
+     */
+    public function destroy(int $id)
+    {
+        $requisition = Requisition::find($id);
+        $requisition->delete();
+
+        return redirect()->route('requisitions')->with('success', 'Requisição excluída com sucesso!');
+    }
 }
