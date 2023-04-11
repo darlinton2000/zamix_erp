@@ -49,6 +49,8 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
 
     // Requisicoes
     Route::get('requisicoes', 'RequisitionController@index')->name('requisitions');
+    Route::get('nova-requisicao', 'RequisitionController@create')->name('requisitions.create');
+    Route::post('nova-requisicao', 'RequisitionController@store')->name('requisitions.store');
 
     // Estoque
     Route::get('estoque', 'StockController@index')->name('stocks');
