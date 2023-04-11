@@ -52,7 +52,7 @@
                     </div>
                 </div>
 
-                <div class="box-footer row">
+                <div class="box-footer">
                     <button type="submit" class="btn btn-success">Cadastrar</button>
                 </div>
             </form>
