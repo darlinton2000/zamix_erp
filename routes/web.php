@@ -51,6 +51,8 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
     Route::get('requisicoes', 'RequisitionController@index')->name('requisitions');
     Route::get('nova-requisicao', 'RequisitionController@create')->name('requisitions.create');
     Route::post('nova-requisicao', 'RequisitionController@store')->name('requisitions.store');
+    Route::get('editar-requisicao/{id}', 'RequisitionController@edit')->name('requisitions.edit');
+    Route::post('editar-requisicao/{id}', 'RequisitionController@update')->name('requisitions.update');
     Route::post('deletar-requisicao/{id}', 'RequisitionController@destroy')->name('requisitions.destroy');
 
     // Estoque

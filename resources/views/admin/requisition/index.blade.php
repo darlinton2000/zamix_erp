@@ -49,7 +49,7 @@
                             <td>{{ \Carbon\Carbon::parse($requisition->withdrawal_date)->format('d/m/Y')}}</td>
                             <td>
                                 <!-- Botão Editar -->
-                                <a href="#"
+                                <a href="{{ route('requisitions.edit', ['id' => $requisition->id]) }}"
                                    class="btn btn-sm btn-warning">Editar</a>
                                 <!-- Botão Excluir -->
                                 <form class="inline" method="POST"

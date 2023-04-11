@@ -103,4 +103,82 @@ class RequisitionController extends Controller
 
         return redirect()->route('requisitions')->with('success', 'Requisição excluída com sucesso!');
     }
+
+    /**
+     * Exibe o formulario Editar Requisicao
+     *
+     * @param integer $id Recebe o id da requisicao
+     * @return void
+     */
+    public function edit(int $id)
+    {
+        $requisition = Requisition::find($id);
+        $users = User::orderby('name')->get();
+        $products = Product::orderby('name')->get();
+
+        if ($requisition){
+            return view('admin.requisition.edit', [
+                'requisition' => $requisition,
+                'users'       => $users,
+                'products'    => $products
+            ]);
+        }
+
+        return redirect()->route('admin.requisition.edit');
+    }
+
+    /**
+     * Edita a requisicao no BD
+     *
+     * @param Request $request Recebe os dados do formulario
+     * @param integer $id Recebe o id da requisicao
+     * @return void
+     */
+    public function update(Request $request, int $id)
+    {
+        $dataAtual = date("Y-m-d");
+        $requisition = Requisition::find($id);
+
+        if ($requisition){
+            // Recebendo apenas os dados abaixo do formulario
+            $data = $request->only([
+                'user_id',
+                'product_id',
+                'amount',
+                'withdrawal_date'
+            ]);
+
+            // Validando
+            $validator = Validator::make($data, [
+                'user_id'         => ['required', 'numeric', 'max:10000'],
+                'product_id'      => ['required', 'numeric', 'max:10000'],
+                'amount'          => ['required', 'numeric', 'max:10000'],
+                'withdrawal_date' => ['required', 'date']
+            ]);
+
+            if ($data['withdrawal_date'] < $dataAtual){
+                return redirect()->back()->with('error', 'A Data da Retirada não pode ser menor que a Data Atual!');
+            }
+
+            // Verificando se existe algum erro com a validação
+            if ($validator->fails()){
+                return redirect()->route('requisitions.edit', ['id' => $requisition->id])
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
+            // Inserindo no BD
+            $requisition->user_id         = $data['user_id'];
+            $requisition->product_id      = $data['product_id'];
+            $requisition->amount          = $data['amount'];
+            $requisition->withdrawal_date = $data['withdrawal_date'];
+            $requisition->save();
+
+            if($requisition){
+                return redirect()->route('requisitions')->with('success', 'Requisição atualizada com sucesso!');
+            }
+        }
+
+        return redirect()->route('requisitions')->with('error', 'Requisição não atualizada com sucesso!');
+    }
 }
