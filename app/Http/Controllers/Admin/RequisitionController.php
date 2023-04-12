@@ -68,8 +68,9 @@ class RequisitionController extends Controller
             'withdrawal_date' => ['required', 'date']
         ]);
 
+        // A Data da Retirada nao pode ser maior que a data atual
         if ($data['withdrawal_date'] < $dataAtual){
-            return redirect()->back()->with('error', 'A Data da Retirada não pode ser menor que a Data Atual!');
+            return redirect()->route('requisitions')->with('error', 'A Data da Retirada não pode ser menor que a Data Atual!');
         }
 
         // Verificando se existe algum erro com a validação
@@ -156,8 +157,9 @@ class RequisitionController extends Controller
                 'withdrawal_date' => ['required', 'date']
             ]);
 
+            // A Data da Retirada nao pode ser maior que a data atual
             if ($data['withdrawal_date'] < $dataAtual){
-                return redirect()->back()->with('error', 'A Data da Retirada não pode ser menor que a Data Atual!');
+                return redirect()->route('requisitions')->with('error', 'A Data da Retirada não pode ser menor que a Data Atual!');
             }
 
             // Verificando se existe algum erro com a validação

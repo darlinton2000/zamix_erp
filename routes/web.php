@@ -57,6 +57,11 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
 
     // Estoque
     Route::get('estoque', 'StockController@index')->name('stocks');
+    Route::get('adicionar-estoque', 'StockController@create')->name('stocks.create');
+    Route::post('adicionar-estoque', 'StockController@store')->name('stocks.store');
+    Route::get('editar-estoque/{id}', 'StockController@edit')->name('stocks.edit');
+    Route::post('editar-estoque/{id}', 'StockController@update')->name('stocks.update');
+    Route::post('deletar-estoque/{id}', 'StockController@destroy')->name('stocks.destroy');
 
     // Relatorios
     Route::get('entrada-estoque', 'ReportController@entryStock')->name('reports.entry.stock');

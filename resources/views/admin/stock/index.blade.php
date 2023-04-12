@@ -5,6 +5,7 @@
 @section('content_header')
     <h1>
         Listar Estoque
+        <a href="{{ route('stocks.create') }}" class="btn btn-sm btn-success">Adicionar</a>
     </h1>
 @stop
 
@@ -38,6 +39,7 @@
                             <th>Preço Venda Total</th>
                             <th>Data Entrada</th>
                             <th>Data Saída</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>   
@@ -62,7 +64,18 @@
                             @else
                                 <td> - </td>
                             @endif
-
+                            <td>
+                                <!-- Botão Editar -->
+                                <a href="{{ route('stocks.edit', ['id' => $stock->id]) }}"
+                                   class="btn btn-sm btn-warning">Editar</a>
+                                <!-- Botão Excluir -->
+                                <form class="inline" method="POST"
+                                      action="{{ route('stocks.destroy', ['id' => $stock->id]) }}"
+                                      onsubmit="return confirm('Tem certeza que deseja excluir?')">
+                                    {!! csrf_field() !!}
+                                    <button class="btn btn-sm btn-danger">Excluir</button>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody> 
